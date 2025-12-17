@@ -27,6 +27,8 @@ try {
     setError("An error occured.Try again later");
   }
   setWeather(null);
+} finally {
+  setLoading(false);
 }
 
  }
@@ -41,6 +43,10 @@ try {
       <div className="bg-black text-white rounded-lg  shadow-lg p-8 max-w-md w-full" >
       <h1 className="font-bold mb-4" >Weather App</h1>
       <SearchBar fetchWeather={fetchWeather}/>
+
+      {loading && <p className="text-center  m-4">Loading</p>}
+
+      {error && <p className="text-red-700 text-center m-4">{error}</p>}
     
       {weather && <WeatherCard  weather={weather}/> }
 
